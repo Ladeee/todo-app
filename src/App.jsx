@@ -10,45 +10,46 @@ function App() {
   const [status, setStatus] = useState("All");
   const [filteredTodos, setFilteredTodos] = useState([]);
 
-useEffect(() => {
-  getLocalTodos();
-}, [])
-
   useEffect(() => {
+    const filterHandler = () => {
+      switch (status) {
+        case "completed":
+          setFilteredTodos(todos.filter(todo => todo.completed === true));
+          break;
+  
+        case "uncompleted":
+          setFilteredTodos(todos.filter(todo => todo.completed === false));
+          break;
+          default:
+            setFilteredTodos(todos);
+            break; 
+      }
+    };
     filterHandler();
-    saveLocalTodos();
     //function runs everytime we add a new todo
     // this array can take in multiple triggers
     // the function runs everytime the trigger changes 
   }, [todos, status])
 
-  const filterHandler = () => {
-    switch (status) {
-      case "completed":
-        setFilteredTodos(todos.filter(todo => todo.completed === true));
-        break;
+  useEffect(() => {
+    const saveLocalTodos = () => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    };
+    saveLocalTodos();
+  })
 
-      case "uncompleted":
-        setFilteredTodos(todos.filter(todo => todo.completed === false));
-        break;
-        default:
-          setFilteredTodos(todos);
-          break; 
-    }
-  };
+  useEffect(() => {
+    const getLocalTodos = () => {
+      if(localStorage.getItem("todos") === null){
+        localStorage.setItem("todos", JSON.stringify([]));
+      } else {
+        let todoLocal = JSON.parse(localStorage.getItem("todos"))
+        setTodos(todoLocal);
+      }
+    };
+    getLocalTodos()
+  },[])
 
-  const saveLocalTodos = () => {
-      localStorage.setItem('todos', JSON.stringify(todos))
-  };
-
-  const getLocalTodos = () => {
-    if(localStorage.getItem("todos") === null){
-      localStorage.setItem("todos", JSON.stringify([]));
-    } else {
-      let todoLocal = JSON.parse(localStorage.getItem("todos"))
-      setTodos(todoLocal);
-    }
-  };
 
   return (
     <div className="App">
