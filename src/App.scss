@@ -97,6 +97,17 @@ select{
   left: 28%;
 }
 
+@media (max-width: 800px){
+  .add{
+    position: unset;
+    margin-top: 20px;
+  }
+
+  .body{
+    align-items: center;
+  }
+}
+
 .todo{
   display: flex;
   flex-direction: column;
