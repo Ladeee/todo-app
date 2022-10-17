@@ -1,0 +1,135 @@
+*{
+  box-sizing: border-box;
+  background-color: rgb(16, 16, 16);
+  color: white;
+  font-size: 14px;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  // font-size: calc(10px + 2vmin);
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
+}
+
+.body{
+  margin-top: 40px;
+  background-color: gainsboro;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 25px;
+}
+
+.display{
+  background-color: transparent;
+}
+
+// @media (prefers-reduced-motion: no-preference) {
+//   .logo {
+//     animation: App-logo-spin infinite 20s linear;
+//   }
+// }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input, select{
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 300px;
+  height: 45px;
+  padding-left: 5px;
+}
+
+input{
+  position: relative;
+}
+
+select{
+  margin: 25px 0;
+}
+
+.lists{
+  margin-top: 40px;
+}
+
+.input-add{
+  display: flex;
+  align-items: center;
+}
+
+.add, .edit, .delete{
+  border: none;
+  width: 45px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: rgb(114, 208, 245);
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.add{
+  position: absolute;
+  left: 25%;
+}
+
+.todo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit{
+  width: 60px;
+  height: 30px;
+}
+
+.delete{
+  background-color: rgb(241, 70, 70);
+  width: 60px;
+  height: 30px;
+}
+
+.plans-btns{
+  display: flex;
+  align-items: center;
+}
+
+.planlist{
+  margin-right: 20px;
+  font-size: 16px;
+  font-family: cursive;
+}
+
+.completed{
+  background-color: rgb(95, 243, 95);
+}
+
+.completedplan{
+  text-decoration: line-through;
+  opacity: 0.5;
+}
